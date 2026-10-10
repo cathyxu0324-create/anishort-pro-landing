@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AniShort Pro · 对话，是下一代片场</title>
+<meta name="description" content="AniShort Pro 专业 AI 影视桌面工作台 — 对话，是下一代片场。">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#010409}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","HarmonyOS Sans SC","MiSans","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;color:#EDF3F8}
+img{display:block}
+ul{list-style:none}
+.stage{max-width:1920px;margin:0 auto;overflow:hidden}
+
+/* ===== shared ===== */
+.h2{font-weight:900;font-size:clamp(30px,3.33vw,64px);letter-spacing:.04em;background:linear-gradient(92deg,#2FA3F2 8%,#5CE6C4 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{color:#A9B4C0;font-size:clamp(14px,1.46vw,28px);margin-top:clamp(8px,.73vw,14px);letter-spacing:.05em}
+.feat li{display:flex;align-items:flex-start;gap:clamp(14px,1.67vw,32px)}
+.feat b{display:block;font-size:clamp(15px,1.41vw,27px);font-weight:700;letter-spacing:.06em}
+.feat i{display:block;font-style:normal;color:#8C99A8;font-size:clamp(12px,.99vw,19px);margin-top:clamp(5px,.42vw,8px);letter-spacing:.05em}
+.ic{flex:none;width:clamp(26px,2.71vw,52px);height:clamp(26px,2.71vw,52px);color:#45D6E8;filter:drop-shadow(0 0 6px rgba(69,214,232,.45))}
+.ic svg{width:100%;height:100%}
+.chip{flex:none;width:clamp(30px,2.92vw,56px);height:clamp(30px,2.92vw,56px);border-radius:clamp(8px,.83vw,16px);border:1px solid rgba(80,220,240,.5);background:rgba(8,26,36,.55);color:#45D6E8;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px rgba(60,200,235,.22),inset 0 0 10px rgba(60,200,235,.12)}
+.chip svg{width:58%;height:58%}
+.chip.g{border-color:rgba(62,224,143,.5);color:#3EE08F;background:rgba(6,30,20,.55);box-shadow:0 0 14px rgba(62,224,143,.22),inset 0 0 10px rgba(62,224,143,.12)}
+.g-left{width:67.19%;height:auto;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 50px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 50px),transparent)}
+.g-right{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 50px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 50px),transparent)}
+
+/* ===== hero ===== */
+.hero img{width:100%;height:auto}
+
+/* ===== s02 影视剧交互工作台 ===== */
+.s2{background:#010103;display:flex;align-items:center}
+.s2 .txt{flex:1;padding:clamp(20px,3vw,58px) 1vw clamp(20px,3.4vw,66px) 3.6vw}
+
+/* ===== s03 多智能体协同制片 ===== */
+.s3{background:#010409;display:flex;align-items:center}
+.s3 .txt{width:37%;padding-left:3.9vw}
+.s3 .g-right{width:63%}
+.s3 .feat{margin-top:clamp(20px,2.4vw,46px);display:grid;row-gap:clamp(18px,2.35vw,45px)}
+
+/* ===== s04 扩展生态可编程 ===== */
+.s4{background:#010A14;display:flex;align-items:center}
+.s4 .g-left{width:68.75%}
+.s4 .txt{flex:1;padding:clamp(20px,2.6vw,50px) 1vw clamp(20px,3vw,58px) 2.2vw}
+
+/* ===== s05 一键全天出剧 ===== */
+.s5{background:#01040A;display:flex;align-items:center}
+.s5 .txt{width:37.2%;padding-left:5vw}
+.s5 .g-right{width:62.8%}
+.s5 .feat{margin-top:clamp(18px,2.2vw,42px);display:grid;row-gap:clamp(18px,2.6vw,50px)}
+.s5 .accent{color:#3FA8F7}
+
+/* ===== s06 对话式创作主权 ===== */
+.s6{background:#010102;display:flex;align-items:center}
+.s6 .g-left{width:64.32%;-webkit-mask-image:none;mask-image:none}
+.s6 .txt{flex:1;padding:clamp(20px,2.6vw,50px) 1.2vw clamp(20px,2.6vw,50px) .5vw}
+
+/* ===== s07 创作者 ===== */
+.s7{background:radial-gradient(120% 90% at 50% 0%,#04121E 0%,#020B12 55%,#01060B 100%);padding:clamp(28px,3.33vw,64px) 2.76vw clamp(30px,3.9vw,75px);text-align:center}
+.s7 .cards{margin-top:clamp(20px,2.7vw,52px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.67vw,32px);text-align:left}
+.s7 .card img{width:100%;height:auto;border-radius:clamp(10px,1.04vw,20px)}
+.s7 .card b{display:block;margin-top:clamp(12px,1.35vw,26px);font-size:clamp(15px,1.35vw,26px);letter-spacing:.08em;text-align:center}
+.s7 .card p{margin:clamp(7px,.73vw,14px) auto 0;font-size:clamp(11px,.83vw,16px);line-height:1.75;color:#93A0AC;max-width:92%;letter-spacing:.03em;text-align:center}
+
+/* ===== s08 安全防护 ===== */
+.s8{background:#010610;padding:clamp(30px,3.65vw,70px) 4vw clamp(30px,3.9vw,75px);text-align:center}
+.s8 .row{margin-top:clamp(16px,1.9vw,36px);display:grid;grid-template-columns:repeat(3,1fr);gap:4vw}
+.s8 .col img{height:clamp(120px,15.6vw,300px);width:auto;margin:0 auto}
+.s8 .col b{display:block;margin-top:clamp(12px,1.77vw,34px);font-size:clamp(16px,1.57vw,30px);letter-spacing:.1em}
+.s8 .col p{margin:clamp(8px,.89vw,17px) auto 0;font-size:clamp(12px,.94vw,18px);line-height:1.8;color:#93A0AC;max-width:88%;letter-spacing:.04em}
+
+/* ===== s09 开放API ===== */
+.s9{background:radial-gradient(90% 70% at 18% 20%,#04202F 0%,#010912 60%,#000508 100%);display:flex;align-items:center}
+.s9 .txt{width:45.3%;padding-left:2.9vw}
+.s9 .g-right{width:54.7%}
+.s9 .h2{font-size:clamp(32px,3.54vw,68px);line-height:1.16}
+.s9 .feat{margin-top:clamp(20px,2.4vw,46px);display:grid;row-gap:clamp(18px,2.35vw,45px)}
+
+/* ===== s10 本地化 ===== */
+.s10{background:#010511;position:relative;padding:clamp(28px,3.54vw,68px) 0 clamp(30px,3.65vw,70px)}
+.s10 .head{text-align:center;position:relative;z-index:2}
+.s10 .laptop{position:absolute;left:7.8vw;top:clamp(80px,17.7vw,340px);width:52.3vw;z-index:1;-webkit-mask-image:radial-gradient(80% 80% at 50% 50%,#000 62%,transparent 98%);mask-image:radial-gradient(80% 80% at 50% 50%,#000 62%,transparent 98%)}
+.s10 .items{position:relative;z-index:2;margin-left:60.6vw;width:34vw;padding-top:clamp(40px,6.5vw,125px);display:grid;row-gap:clamp(22px,3.3vw,64px)}
+
+/* ===== s11 CTA / footer ===== */
+.s11{background:#020A12;position:relative;padding-top:clamp(36px,4.9vw,94px);overflow:hidden}
+.s11 .cta{position:relative;z-index:2;text-align:center}
+.s11 .logo{display:flex;align-items:center;justify-content:center;gap:clamp(6px,.63vw,12px)}
+.s11 .logo svg{width:clamp(22px,2.4vw,46px);height:clamp(22px,2.4vw,46px)}
+.s11 .logo span{font-size:clamp(16px,1.77vw,34px);font-weight:800;letter-spacing:.02em}
+.s11 .h2{font-size:clamp(34px,4.375vw,84px);margin-top:clamp(10px,1.1vw,21px);letter-spacing:.06em}
+.s11 .sub{font-size:clamp(14px,1.46vw,28px);margin-top:clamp(8px,.94vw,18px)}
+.s11 .btns{margin-top:clamp(18px,2.2vw,42px);display:flex;justify-content:center;gap:clamp(12px,1.25vw,24px)}
+.btn{display:inline-flex;align-items:center;gap:clamp(6px,.52vw,10px);height:clamp(32px,3.33vw,64px);padding:0 clamp(16px,1.72vw,33px);border-radius:clamp(16px,1.67vw,32px);font-size:clamp(13px,1.25vw,24px);font-weight:700;letter-spacing:.06em;text-decoration:none}
+.btn.pri{background:linear-gradient(92deg,#3EC6F0,#5FE8A8);color:#04121A;box-shadow:0 0 24px rgba(80,210,220,.35)}
+.btn.ghost{border:1px solid rgba(120,225,240,.55);color:#DFF6FA;background:rgba(6,20,28,.4)}
+.btn .arr{font-weight:400}
+.s11 .glow{position:absolute;left:50%;bottom:clamp(40px,5.2vw,100px);transform:translateX(-50%);width:120%;height:clamp(120px,16vw,310px);background:radial-gradient(55% 60% at 50% 100%,rgba(50,190,225,.38) 0%,rgba(40,150,200,.14) 45%,transparent 72%);pointer-events:none}
+.s11 .foot{position:relative;z-index:2;margin-top:clamp(60px,7.8vw,150px);border-top:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:space-between;padding:0 3vw;height:clamp(44px,4.7vw,90px)}
+.s11 .foot .l,.s11 .foot .m,.s11 .foot .r{display:flex;align-items:center;gap:clamp(8px,.83vw,16px)}
+.s11 .foot .logo{gap:clamp(4px,.42vw,8px)}
+.s11 .foot .logo svg{width:clamp(12px,1.25vw,24px);height:clamp(12px,1.25vw,24px)}
+.s11 .foot .logo span{font-size:clamp(9px,.94vw,18px);font-weight:800}
+.s11 .foot small{color:#7C8894;font-size:clamp(8px,.73vw,14px)}
+.s11 .foot .m a{color:#9AA7B2;font-size:clamp(8px,.73vw,14px);text-decoration:none;padding:0 clamp(6px,.63vw,12px);border-right:1px solid rgba(255,255,255,.14)}
+.s11 .foot .m a:last-child{border-right:0}
+.s11 .foot .soc{width:clamp(16px,1.77vw,34px);height:clamp(16px,1.77vw,34px);border-radius:50%;border:1px solid rgba(255,255,255,.25);color:#B9C4CD;display:flex;align-items:center;justify-content:center}
+.s11 .foot .soc svg{width:55%;height:55%}
+</style>
+</head>
+<body>
+<main class="stage">
+
+  <!-- 01 Hero（原图完整保留） -->
+  <section class="hero"><img src="assets/section01.png" alt="AniShort Pro 对话，是下一代片场"></section>
+
+  <!-- 02 影视剧交互工作台 -->
+  <section class="s2">
+    <img class="g-left" src="assets/sec02_graphic.png" alt="剪辑工作台界面">
+    <div class="txt">
+      <h2 class="h2">影视剧交互工作台</h2>
+      <p class="sub">全链路创作，本地界面闭环流转</p>
+      <ul class="feat" style="margin-top:clamp(22px,2.9vw,56px);display:grid;row-gap:clamp(26px,4.1vw,79px)">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="12.5" height="12.5" rx="3.2"/><rect x="8.5" y="8.5" width="12.5" height="12.5" rx="3.2"/></svg></span><div><b>消除工具切换断点</b><i>从创意到成片，一个界面搞定</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.2V12l3.4 2.2"/><path d="M5.5 4.5 4 7.5M4 7.5l3 .8" stroke-linecap="round"/></svg></span><div><b>减少等待协作损耗</b><i>创作、调整、反馈实时完成</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 20v-5"/><path d="M10 20v-9"/><path d="M15 20v-7"/><path d="M13.5 5.5 20 4l-1.4 6.4"/><path d="M20 4c-4.5 2-7.5 4-9 7"/></svg></span><div><b>创作全程顺畅无堵</b><i>灵感不断流，效率始终在线</i></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03 多智能体协同制片 -->
+  <section class="s3">
+    <div class="txt">
+      <h2 class="h2">多智能体协同制片</h2>
+      <p class="sub">把 Kimi、Codex 装进画布，你的专属 AI 制片</p>
+      <ul class="feat">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.1"/><path d="M3.5 19.5c.4-3 2.7-4.8 5.5-4.8s5.1 1.8 5.5 4.8"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.9c2.6.1 4.2 1.7 4.6 4.1"/></svg></span><div><b>多智能体专业分工</b><i>编剧、美术、剪辑等角色各司其职</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.5 20.5 8 12 12.5 3.5 8z"/><path d="M3.5 13 12 17.5 20.5 13"/><path d="M3.5 17.5 12 22l8.5-4.5"/></svg></span><div><b>画布级深度集成</b><i>多模型能力无缝嵌入创作流程</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11.5H9.5L4.5 20z"/><path d="M8.5 10.8h.01M12.5 10.8h.01M16.5 10.8h.01" stroke-linecap="round" stroke-width="2.4"/></svg></span><div><b>对话式调度协同</b><i>一句指令，联动全链路协作</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2.5 5.5 13.5H11l-1 8L18.5 10H13z"/></svg></span><div><b>随时响应永不掉线</b><i>7×24 小时在线，创意不断档</i></div></li>
+      </ul>
+    </div>
+    <img class="g-right" src="assets/sec03_graphic.png" alt="AI 剧组画布协同">
+  </section>
+
+  <!-- 04 扩展生态可编程 -->
+  <section class="s4">
+    <img class="g-left" src="assets/sec04_graphic.png" alt="Skill 插件 MCP 生态">
+    <div class="txt">
+      <h2 class="h2">扩展生态可编程</h2>
+      <p class="sub">Harness 创作方法论，能力永续沉淀</p>
+      <ul class="feat" style="margin-top:clamp(22px,2.9vw,56px);display:grid;row-gap:clamp(20px,2.55vw,49px)">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.5 21 7.5v9L12 21.5 3 16.5v-9z"/><path d="M12 12l9-4.5M12 12v9.5M12 12 3 7.5"/></svg></span><div><b>三层开放体系</b><i>Skill · 插件 · MCP，灵活扩展，无限可能</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v4.5M15 3v4.5"/><path d="M7 7.5h10v3.2a5 5 0 0 1-10 0z"/><path d="M12 15.7V21"/></svg></span><div><b>自定义生产管线</b><i>自由组合工具与模型，打造专属创作流程</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="6" rx="7.5" ry="2.8"/><path d="M4.5 6v12c0 1.55 3.35 2.8 7.5 2.8s7.5-1.25 7.5-2.8V6"/><path d="M4.5 12c0 1.55 3.35 2.8 7.5 2.8s7.5-1.25 7.5-2.8"/></svg></span><div><b>创作经验可沉淀</b><i>工作流、配置、模板一键复用，持续积累</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 20v-4"/><path d="M10 20v-7"/><path d="M15 20v-10"/><path d="M13 6.5 19.5 4l-1.2 6"/><path d="M19.5 4c-3.8 1.6-6.4 3.3-8 6"/></svg></span><div><b>持续迭代进化</b><i>接入更多模型与能力，与创作者共同成长</i></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 05 一键全天出剧 -->
+  <section class="s5">
+    <div class="txt">
+      <h2 class="h2">一键全天出剧</h2>
+      <p class="sub">内容工业化的<span class="accent">全新产能</span></p>
+      <ul class="feat">
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4.5 5h15v10.5H10L5.5 19z"/></svg></span><div><b>自然语言驱动全链路</b><i>一句话生成完整剧集，从创意到成片</i></div></li>
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3.2 2"/></svg></span><div><b>7×24 小时不间断</b><i>全天候自动运行，持续产出不停机</i></div></li>
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 3.5 20.5 8 12 12.5 3.5 8z"/><path d="M3.5 13.5 12 18l8.5-4.5"/></svg></span><div><b>多项目并行产出</b><i>同时生成多个剧集，效率成倍提升</i></div></li>
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M13 2.5 5.5 13.5H11l-1 8L18.5 10H13z"/></svg></span><div><b>数月周期压缩至小时</b><i>AI 全流程加速，让创意即刻变现</i></div></li>
+      </ul>
+    </div>
+    <img class="g-right" src="assets/sec05_graphic.png" alt="AI 批量生成剧集面板">
+  </section>
+
+  <!-- 06 对话式创作主权 -->
+  <section class="s6">
+    <img class="g-left" src="assets/sec06_graphic.png" alt="对话式创作界面">
+    <div class="txt">
+      <h2 class="h2">对话式创作主权</h2>
+      <p class="sub">把镜头交还给每一个人</p>
+      <ul class="feat" style="margin-top:clamp(26px,3.6vw,70px);display:grid;row-gap:clamp(30px,5.15vw,99px)">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M8.5 4.5 19 11l-4.6 1.2 2.6 5.4-2.8 1.3-2.6-5.4-3.1 3z"/></svg></span><div><b>无需复杂操作</b><i>自然语言描述，轻松生成专业级镜头</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11.5H9.5L4.5 20z"/><path d="M8.5 10.8h.01M12.5 10.8h.01M16.5 10.8h.01" stroke-linecap="round" stroke-width="2.4"/></svg></span><div><b>对话即创作</b><i>边聊边改，实时生成，创意一气呵成</i></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3.5 8.5 5.5 3.5 20 6.8 19.5 8.5"/><path d="M8 8 9 4M13 8.5 14 4.5"/></svg></span><div><b>人人都有专业片场</b><i>不受设备与技术限制，让创作回归想象</i></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 07 专为每一位创作者打造 -->
+  <section class="s7">
+    <h2 class="h2" style="font-size:clamp(32px,3.54vw,68px)">专为每一位创作者打造</h2>
+    <p class="sub" style="font-size:clamp(12px,1.25vw,24px)">无论你来自哪里，以何种方式创作，AniShort 都是你实现创意的强大伙伴</p>
+    <div class="cards">
+      <div class="card"><img src="assets/sec07_card1.png" alt="独立创作者"><b>独立创作者</b><p>一个人，也能完成专业级的视频创作，让灵感快速变为作品。</p></div>
+      <div class="card"><img src="assets/sec07_card2.png" alt="小型创作团队"><b>小型创作团队</b><p>高效协作，统一风格，让创意在团队中自由流动，产出更优质的内容。</p></div>
+      <div class="card"><img src="assets/sec07_card3.png" alt="商业定制团队"><b>商业定制团队</b><p>应对多样化的商业需求，快速生成高质量影视内容，助力品牌出圈。</p></div>
+      <div class="card"><img src="assets/sec07_card4.png" alt="技术开发者"><b>技术开发者</b><p>灵活的接口与强大的技术能力，助你将 AI 视频能力集成更多可能。</p></div>
+    </div>
+  </section>
+
+  <!-- 08 全链路安全防护 -->
+  <section class="s8">
+    <h2 class="h2" style="font-size:clamp(34px,3.96vw,76px)">全链路安全防护</h2>
+    <p class="sub" style="font-size:clamp(12px,1.25vw,24px)">从数据到创作，全方位守护你的内容与隐私，让创意更自由、更安心</p>
+    <div class="row">
+      <div class="col"><img src="assets/sec08_icon1.png" alt="本地数据加密"><b>本地数据加密</b><p>敏感数据本地加密存储，不上传原始素材，从源头保障你的数据安全。</p></div>
+      <div class="col"><img src="assets/sec08_icon2.png" alt="全链路可追溯"><b>全链路可追溯</b><p>从生成到发布全流程记录，每一步操作都可追溯、可审计。</p></div>
+      <div class="col"><img src="assets/sec08_icon3.png" alt="原生稳定运行"><b>原生稳定运行</b><p>基于成熟的原生技术架构，持续更新迭代，稳定高效，值得长期信赖。</p></div>
+    </div>
+  </section>
+
+  <!-- 09 开放SD等API 自由不设限 -->
+  <section class="s9">
+    <div class="txt">
+      <h2 class="h2">开放SD等API<br>自由不设限</h2>
+      <p class="sub">想接什么模型，你说了算。</p>
+      <ul class="feat">
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 2.5 21 7.5v9L12 21.5 3 16.5v-9z"/><path d="M12 12l9-4.5M12 12v9.5M12 12 3 7.5"/></svg></span><div><b>Seedance 等各类模型 API 随意接</b><i>主流与新锐模型，均可快速接入</i></div></li>
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></span><div><b>第三方应用 API 兼容</b><i>轻松对接，拓展更多可能</i></div></li>
+        <li><span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M8 15.5c-2.2 0-4-1.6-4-3.5S5.8 8.5 8 8.5c3.2 0 4.8 7 8 7 2.2 0 4-1.6 4-3.5S18.2 8.5 16 8.5c-3.2 0-4.8 7-8 7z"/></svg></span><div><b>不锁模型、不锁功能</b><i>真正的开放，让创作更自由</i></div></li>
+      </ul>
+    </div>
+    <img class="g-right" src="assets/sec09_graphic.png" alt="开放 API 模型生态">
+  </section>
+
+  <!-- 10 插件&Skill 本地化 -->
+  <section class="s10">
+    <div class="head">
+      <h2 class="h2" style="font-size:clamp(32px,3.75vw,72px)">插件&amp;Skill 本地化</h2>
+      <p class="sub" style="font-size:clamp(13px,1.35vw,26px)">一切资产只属于你。</p>
+    </div>
+    <img class="laptop" src="assets/sec10_laptop.png" alt="本地加密工作台">
+    <div class="items">
+      <ul class="feat" style="display:grid;row-gap:inherit">
+        <li><span class="chip g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="9.5" rx="2"/><path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"/><circle cx="12" cy="15.2" r="1.4" fill="currentColor" stroke="none"/></svg></span><div><b>数据本地加密</b><i>成片与源文件不上云 无风险</i></div></li>
+        <li><span class="chip g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="4" y="4" width="6.8" height="6.8" rx="1.6"/><rect x="13.2" y="6.8" width="6.8" height="6.8" rx="1.6"/><rect x="6.8" y="13.2" width="6.8" height="6.8" rx="1.6"/></svg></span><div><b>插件&amp;Skill独享</b><i>本地保存本地找，可转移</i></div></li>
+        <li><span class="chip g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><ellipse cx="12" cy="6.2" rx="7.3" ry="2.7"/><path d="M4.7 6.2v11.6c0 1.5 3.27 2.7 7.3 2.7s7.3-1.2 7.3-2.7V6.2"/><path d="M4.7 12c0 1.5 3.27 2.7 7.3 2.7s7.3-1.2 7.3-2.7"/></svg></span><div><b>资产完全归你</b><i>不绑定平台，换机可完整带走</i></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 11 CTA + Footer -->
+  <section class="s11">
+    <div class="cta">
+      <div class="logo">
+        <svg viewBox="0 0 48 48" fill="none"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2991F1"/><stop offset="1" stop-color="#56D978"/></linearGradient></defs><path d="M24 3 29 19 45 24 29 29 24 45 19 29 3 24 19 19Z" fill="url(#lg)"/></svg>
+        <span>AniShort</span>
+      </div>
+      <h2 class="h2">专属工作台，做剧更简单</h2>
+      <p class="sub">重新定义影视剧内容生产的入口</p>
+      <div class="btns">
+        <a class="btn pri" href="#">立即下载 <span class="arr">→</span></a>
+        <a class="btn ghost" href="#">联系客服 <span class="arr">→</span></a>
+      </div>
+    </div>
+    <div class="glow"></div>
+    <div class="foot">
+      <div class="l">
+        <div class="logo"><svg viewBox="0 0 48 48" fill="none"><path d="M24 3 29 19 45 24 29 29 24 45 19 29 3 24 19 19Z" fill="url(#lg)"/></svg><span>AniShort</span></div>
+        <small>© 2024 AniShort 保留所有权利.</small>
+      </div>
+      <div class="m"><a href="#">关于我们</a><a href="#">使用条款</a><a href="#">隐私政策</a><a href="#">帮助中心</a></div>
+      <div class="r">
+        <span class="soc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.5 6.5C5.4 6.5 3 8.5 3 11c0 1.4.8 2.6 2 3.4l-.5 2 2.2-1.1c.6.1 1.2.2 1.8.2 3.1 0 5.5-2 5.5-4.5s-2.4-4.5-5.5-4.5z"/><path d="M15.5 9.5c2.8.2 5 2 5 4.2 0 1.2-.7 2.3-1.7 3l.4 1.7-1.9-.9c-.5.1-1 .2-1.6.2-1.3 0-2.5-.4-3.4-1"/></svg></span>
+        <span class="soc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="10" r="6.5"/><path d="M14.5 14.5 20 20"/><circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="8" r="1" fill="currentColor" stroke="none"/></svg></span>
+        <span class="soc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="7" width="17" height="12" rx="2.5"/><path d="m8 3 2.5 4M16 3l-2.5 4"/><path d="M10.5 11.2v3.6l3.2-1.8z" fill="currentColor" stroke="none"/></svg></span>
+        <span class="soc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12.5" rx="3"/><path d="M10.5 9.8v5l4.2-2.5z" fill="currentColor" stroke="none"/></svg></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
