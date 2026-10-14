@@ -107,22 +107,7 @@ img{max-width:100%}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
-/* ---------- 导航 ---------- */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease;
-  border-bottom:1px solid transparent;
-}
-nav.scrolled{
-  background:rgba(5,7,14,.72);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-bottom-color:var(--line);
-}
-.nav-inner{
-  max-width:1200px;margin:0 auto;padding:0 32px;
-  height:72px;display:flex;align-items:center;gap:40px;
-}
+/* ---------- Logo（页脚复用） ---------- */
 .logo{display:flex;align-items:center;gap:11px;font-weight:700;font-size:17.5px;letter-spacing:.01em}
 .logo-mark{
   width:30px;height:30px;border-radius:9px;background:var(--grad);
@@ -131,12 +116,6 @@ nav.scrolled{
 }
 .logo-mark svg{width:14px;height:14px;fill:#04121A}
 .logo span{color:var(--txt3);font-weight:500}
-.nav-links{display:flex;gap:34px;margin-left:12px}
-.nav-links a{font-size:14.5px;color:var(--txt2);transition:color .25s}
-.nav-links a:hover{color:var(--txt)}
-.nav-cta{
-  margin-left:auto;display:flex;align-items:center;gap:12px;
-}
 .btn{
   display:inline-flex;align-items:center;gap:9px;
   border-radius:999px;font-size:14.5px;font-weight:600;
@@ -158,7 +137,7 @@ nav.scrolled{
 
 /* ---------- Hero ---------- */
 .hero{
-  position:relative;padding:186px 0 110px;
+  position:relative;padding:110px 0 110px;
   text-align:center;overflow:hidden;
 }
 .hero .orb.o1{width:640px;height:640px;background:rgba(86,217,120,.14);top:-220px;left:-160px}
@@ -491,8 +470,7 @@ footer{
 @media (max-width:768px){
   .wrap{padding:0 22px}
   .sec{padding:88px 0}
-  .hero{padding:140px 0 80px}
-  .nav-links{display:none}
+  .hero{padding:110px 0 80px}
   .eco-grid,.api-grid,.stats{grid-template-columns:1fr}
   .role-grid{grid-template-columns:1fr}
   .mk-body{grid-template-columns:1fr}
@@ -505,7 +483,6 @@ footer{
   .pipe-step div{text-align:left}
   .float-chip{display:none}
   .mockup{transform:none;animation:none}
-  .nav-cta .btn-ghost{display:none}
 }
 </style>
 </head>
@@ -520,32 +497,6 @@ footer{
     </linearGradient>
   </defs>
 </svg>
-
-<!-- 导航 -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a class="logo" href="#top">
-      <span class="logo-mark">
-        <svg viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5-10-6.5z"/></svg>
-      </span>
-      AniShort <span>Pro</span>
-    </a>
-    <div class="nav-links">
-      <a href="#agents">AI 剧组</a>
-      <a href="#eco">扩展生态</a>
-      <a href="#speed">全天出剧</a>
-      <a href="#safe">安全本地化</a>
-      <a href="#api">开放 API</a>
-    </div>
-    <div class="nav-cta">
-      <a class="btn btn-ghost" href="#voice">了解功能</a>
-      <a class="btn btn-primary" href="#download">
-        <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg>
-        立即下载
-      </a>
-    </div>
-  </div>
-</nav>
 
 <!-- 01 Hero：影视剧交互工作台 -->
 <header class="hero" id="top">
@@ -866,12 +817,6 @@ footer{
 </footer>
 
 <script>
-// 导航滚动状态
-const nav = document.getElementById('nav');
-const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
-
 // 滚动显现
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -880,7 +825,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// 平滑锚点（补偿固定导航高度）
+// 平滑锚点
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', ev => {
     const id = a.getAttribute('href');
@@ -888,7 +833,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       const t = document.querySelector(id);
       if (t) {
         ev.preventDefault();
-        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
       }
     }
   });
